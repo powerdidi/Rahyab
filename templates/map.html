@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}نقشه شبکه | ره‌یاب مشهد{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/leaflet.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/markercluster.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/markercluster.default.css') }}">
+{% endblock %}
+
+{% block data %}
+window.RA_DATA.page = "map";
+{% endblock %}
+
+{% block content %}
+<div class="map-screen">
+  <div class="map-toolbar">
+    <button class="map-back-btn" id="mapBackBtn" title="بازگشت"><i data-lucide="arrow-right"></i></button>
+    <div class="map-modes">
+      <button class="map-mode" data-mode="bus"><i data-lucide="bus"></i><span>اتوبوس</span></button>
+      <button class="map-mode" data-mode="metro"><i data-lucide="train-front"></i><span>مترو</span></button>
+      <button class="map-mode" data-mode="brt"><i data-lucide="bus-front"></i><span>BRT</span></button>
+      <button class="map-mode" data-mode="bike"><i data-lucide="bike"></i><span>دوچرخه</span></button>
+    </div>
+    <button class="map-add-line" id="mapAddLine"><i data-lucide="plus"></i> انتخاب خط</button>
+  </div>
+
+  <div class="map-lines-bar" id="mapSelectedLines"></div>
+
+  <div class="map-canvas" id="mapCanvas"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='vendor/leaflet.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/markercluster.js') }}"></script>
+<script src="{{ url_for('static', filename='map.js') }}"></script>
+{% endblock %}

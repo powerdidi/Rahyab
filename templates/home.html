@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}ره‌یاب مشهد | مسیریاب حمل‌ونقل عمومی{% endblock %}
+
+{% block data %}
+window.RA_DATA.notices = {{ notices | tojson }};
+window.RA_DATA.page = "home";
+{% endblock %}
+
+{% block content %}
+<div class="page">
+  <header class="h-head">
+    <div class="brand">
+      <h1>ره‌یاب مشهد</h1>
+      <p>سفر هوشمند با حمل‌ونقل عمومی</p>
+    </div>
+    <div class="time-box">
+      <span id="clock">--:--</span>
+      <span id="date">-</span>
+    </div>
+  </header>
+
+  <div class="ticker">
+    <i data-lucide="megaphone"></i>
+    <span id="tick" class="tk-anim">{{ notices[0] if notices else '' }}</span>
+  </div>
+
+  <div class="bento">
+    <button class="bento-tile out tall" data-go="combo">
+      <span class="bento-ic"><i data-lucide="route"></i></span>
+      <span class="bento-tx">
+        <b>مسیریاب ترکیبی</b>
+        <i>اتوبوس، مترو، BRT و دوچرخه در یک سفر</i>
+      </span>
+    </button>
+
+    <button class="bento-tile out" data-go="bus">
+      <span class="bento-ic"><i data-lucide="bus"></i></span>
+      <span class="bento-tx"><b>مسیریاب اتوبوس</b><i>انتخاب خط و ایستگاه</i></span>
+    </button>
+
+    <button class="bento-tile in" data-go="qr">
+      <span class="bento-ic"><i data-lucide="scan-line"></i></span>
+      <span class="bento-tx"><b>اسکن ایستگاه</b><i>بارکد سکوها</i></span>
+    </button>
+
+    <button class="bento-tile wide map-tile" data-go="map">
+      <span class="bento-tx"><b>نقشه شبکه</b><i>در یک نگاه مسیرها را ببینید</i></span>
+      <span class="bento-ic"><i data-lucide="map"></i></span>
+    </button>
+  </div>
+</div>
+{% endblock %}
