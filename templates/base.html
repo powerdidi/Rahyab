@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#e6e9ef">
+<title>{% block title %}ره‌یاب مشهد{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+<div class="phone">
+  <div class="ph-in">
+    <main class="screen" id="screen">
+      {% block content %}{% endblock %}
+    </main>
+    <nav class="dock" id="dock">
+      <button data-dock="home"><i data-lucide="house"></i></button>
+      <button data-dock="bus"><i data-lucide="bus"></i></button>
+      <button data-dock="combo"><i data-lucide="route"></i></button>
+      <button data-dock="qr"><i data-lucide="scan-line"></i></button>
+    </nav>
+    <div class="sheet-host" id="sheetHost"></div>
+    <div class="toast-host" id="toastHost"></div>
+    <div id="mapHost"></div>
+  </div>
+</div>
+<script>
+  /* داده تزریق‌شده از سمت سرور — در گام‌های بعد از وب‌سرویس می‌آید */
+  window.RA_DATA = window.RA_DATA || {};
+  {% block data %}{% endblock %}
+</script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
