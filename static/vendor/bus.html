@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}مسیریاب اتوبوس | ره‌یاب مشهد{% endblock %}
+
+{% block data %}
+window.RA_DATA.page = "bus";
+{% endblock %}
+
+{% block content %}
+<!-- صفحه توسط bus.js (همانند renderBus پروتوتایپ) در #screen رندر می‌شود:
+     pageHead + stepper (مبدا/خط/مقصد/مسیر) + بدنه‌ی مرحله‌ی جاری. -->
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='bus.js') }}"></script>
+{% endblock %}
